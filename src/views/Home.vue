@@ -18,5 +18,6 @@ export default {
 .container {
     margin: 0 auto;
     max-width: 1280px;
+    background-color: #92977E;
 }
 </style>

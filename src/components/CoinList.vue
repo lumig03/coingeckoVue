@@ -1,15 +1,17 @@
 <template>
   <div class="coinlist">
-      <div class="coinlist_item" v-for="(item, index) in localList" :key="index">
-          <div class="coinlist_item-image">
-              <img :src="item.image"/>
-          </div>
-          <div class="coinlist_item-name">
-              {{ item.name }}
-          </div>
-          <div class="coinlist_item-price">
-              {{ formatPrice(item.current_price) }}
-          </div>
+      <div class="coinlist_item-wrapper" v-for="(item, index) in localList" :key="index">
+            <router-link class="coinlist_item" :to="{ name: 'ProfileCoin', params:{'id': item.id }}">
+                <div class="coinlist_item-image">
+                    <img :src="item.image"/>
+                </div>
+                <div class="coinlist_item-name">
+                    {{ item.name }}
+                </div>
+                <div class="coinlist_item-price">
+                    {{ formatPrice(item.current_price) }}
+                </div>
+            </router-link>
       </div>
   </div>
 </template>
@@ -54,14 +56,36 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 .coinlist_item {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px;
+    text-decoration: none;
+    color: black;
+}
 
-    .coinlist_item-image {
-        width: 5em;
-    }
+.coinlist_item-wrapper:nth-of-type(even) {
+    background-color: #EADDA6;
+}
+
+.coinlist_item-wrapper:nth-of-type(odd) {
+    background-color: #FFFAE2;
+}
+
+.coinlist_item-image img {
+    width: 5em;
+    height: auto;
+}
+
+.coinlist_item-name {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.coinlist_item-price {
+    font-size: 25px;
+    font-weight: 700;
 }
 </style>
