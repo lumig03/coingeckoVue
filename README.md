@@ -1,5 +1,8 @@
 # coingeckovue
 
+Simple project in Vue 3 using CoinGecko API.
+Also using axios for services requests.
+
 ## Project setup
 ```
 npm install
