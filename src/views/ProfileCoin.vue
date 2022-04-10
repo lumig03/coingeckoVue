@@ -1,4 +1,5 @@
 <template>
+<div class="container">
     <section v-if="localLoading">
         <div>
             Loading...
@@ -6,25 +7,28 @@
     </section>
     <section v-else>
         <div class="coinprofile">
-            <div class="coinprofile_logo">
-                <img :src="localData.image.large"/>
-            </div>
-            <div class="coinprofile_name">
-                {{ localData.name }}
+            <div class="coinprofile--inline">
+                <div class="coinprofile_logo">
+                    <img :src="localData.image.large"/>
+                </div>
+                <div class="coinprofile_name">
+                    {{ localData.name }}
+                </div>
             </div>
             <div class="coinprofile_market-cap">
-               Current Value: {{ formatPrice(localData.market_data.current_price.eur) }}
+               <label> Current Value: </label> {{ formatPrice(localData.market_data.current_price.eur) }}
             </div>
             <div class="coinprofile_market-cap">
-                Market Cap: {{ formatPrice(localData.market_data.market_cap.eur) }}
+                <label> Market Cap: </label> {{ formatPrice(localData.market_data.market_cap.eur) }}
             </div>
              <div class="coinprofile_market-cap">
-                Volume Traded: {{ formatPrice(localData.market_data.total_volume.eur) }}
+               <label> Volume Traded: </label> {{ formatPrice(localData.market_data.total_volume.eur) }}
             </div>
             <div class="coinprofile_description" v-html="descriptionCoin">
             </div>
         </div>
     </section>
+</div>
 </template>
 
 <script>
@@ -75,5 +79,38 @@ export default {
 </script>
 
 <style>
+.coinprofile {
+    color: black;
+    font-size: 16px;
+}
 
+.coinprofile label{
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.coinprofile > div {
+    padding: 20px;
+}
+
+.coinprofile--inline {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.coinprofile--inline > div {
+    padding: 10px;
+}
+
+.coinprofile_name {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.coinprofile_description {
+    text-align: initial;
+}
 </style>
